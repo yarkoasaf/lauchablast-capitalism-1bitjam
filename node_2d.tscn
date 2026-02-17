@@ -5,6 +5,8 @@
 [ext_resource type="Script" uid="uid://bw22vvhpq4e7d" path="res://money_display.gd" id="3_epypp"]
 [ext_resource type="Script" uid="uid://bxujlq4xplhdp" path="res://remove_money_button.gd" id="3_q6r6c"]
 [ext_resource type="Script" uid="uid://clqe0p30pb324" path="res://add_money_button.gd" id="4_0hol4"]
+[ext_resource type="Shader" uid="uid://caunqkded6gyy" path="res://clearSprite.gdshader" id="6_d21ai"]
+[ext_resource type="Texture2D" uid="uid://x1wkeg34jted" path="res://tree_1__png_with_transparency__by_bupaje_d65ctod-fullview.png" id="7_rj586"]
 
 [sub_resource type="Shader" id="Shader_wtcfe"]
 code = "shader_type canvas_item;
@@ -51,6 +53,10 @@ shader_parameter/dither_strength = 0.0030000001425
 [sub_resource type="LabelSettings" id="LabelSettings_0hol4"]
 font_size = 32
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4d7sh"]
+shader = ExtResource("6_d21ai")
+shader_parameter/whiten = 0.30800001463
+
 [node name="Node2D" type="Node2D" unique_id=915550732]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=210857573]
@@ -61,6 +67,10 @@ material = SubResource("ShaderMaterial_wtcfe")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -11.0
+offset_right = 8.0
+offset_bottom = -11.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -101,7 +111,7 @@ scale = Vector2(0.10275001, 0.06575)
 texture = ExtResource("2_epypp")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1733084210]
-position = Vector2(1265.0001, 318.00003)
+position = Vector2(1290, 298.00003)
 scale = Vector2(0.12331249, 0.1532006)
 texture = ExtResource("2_0e48y")
 
@@ -118,3 +128,21 @@ offset_bottom = 73.0
 text = "alo"
 label_settings = SubResource("LabelSettings_0hol4")
 script = ExtResource("3_epypp")
+
+[node name="Tree1PngWithTransparencyByBupajeD65CtodFullview" type="Sprite2D" parent="." unique_id=1982455389]
+material = SubResource("ShaderMaterial_4d7sh")
+position = Vector2(349, 249.00003)
+scale = Vector2(0.05468745, 0.046673726)
+texture = ExtResource("7_rj586")
+
+[node name="Tree1PngWithTransparencyByBupajeD65CtodFullview2" type="Sprite2D" parent="." unique_id=2002387307]
+material = SubResource("ShaderMaterial_4d7sh")
+position = Vector2(181, 259)
+scale = Vector2(0.043487553, 0.041032154)
+texture = ExtResource("7_rj586")
+
+[node name="Tree1PngWithTransparencyByBupajeD65CtodFullview3" type="Sprite2D" parent="." unique_id=1511630668]
+material = SubResource("ShaderMaterial_4d7sh")
+position = Vector2(154, 267.00003)
+scale = Vector2(0.06519788, 0.04005358)
+texture = ExtResource("7_rj586")
