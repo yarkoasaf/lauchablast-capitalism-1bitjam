@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://c44wcoh434kqa"]
+
+[ext_resource type="Shader" uid="uid://bjisum2wlfbd7" path="res://2color.gdshader" id="1_0e48y"]
+[ext_resource type="Texture2D" uid="uid://ccubbco7godyh" path="res://AlcaldeRichardLeonelliRapanilahue-ezgif.com-optijpeg.jpg" id="2_0e48y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wtcfe"]
+shader = ExtResource("1_0e48y")
+shader_parameter/color_a = Color(0, 0, 0, 1)
+shader_parameter/color_b = Color(1, 1, 1, 1)
+shader_parameter/threshold = 0.5
+
+[node name="Node2D" type="Node2D" unique_id=915550732]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=210857573]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1401518524]
+material = SubResource("ShaderMaterial_wtcfe")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1733084210]
+position = Vector2(1159, 319.00003)
+scale = Vector2(0.12331249, 0.1532006)
+texture = ExtResource("2_0e48y")
