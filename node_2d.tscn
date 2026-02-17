@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://c44wcoh434kqa"]
 
 [ext_resource type="Texture2D" uid="uid://ccubbco7godyh" path="res://AlcaldeRichardLeonelliRapanilahue-ezgif.com-optijpeg.jpg" id="2_0e48y"]
+[ext_resource type="Texture2D" uid="uid://bbcu21wfnyf8h" path="res://assets/img/employe.png" id="2_epypp"]
+[ext_resource type="Script" uid="uid://bw22vvhpq4e7d" path="res://money_display.gd" id="3_epypp"]
+[ext_resource type="Script" uid="uid://bxujlq4xplhdp" path="res://remove_money_button.gd" id="3_q6r6c"]
+[ext_resource type="Script" uid="uid://clqe0p30pb324" path="res://add_money_button.gd" id="4_0hol4"]
 
 [sub_resource type="Shader" id="Shader_wtcfe"]
 code = "shader_type canvas_item;
@@ -44,9 +48,13 @@ shader_parameter/color_b = Color(0.95686275, 0.99215686, 0.8509804, 1)
 shader_parameter/threshold = 0.4230000200925
 shader_parameter/dither_strength = 0.0030000001425
 
+[sub_resource type="LabelSettings" id="LabelSettings_0hol4"]
+font_size = 32
+
 [node name="Node2D" type="Node2D" unique_id=915550732]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=210857573]
+layer = 0
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1401518524]
 material = SubResource("ShaderMaterial_wtcfe")
@@ -56,7 +64,57 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Button" type="Button" parent="CanvasLayer/ColorRect" unique_id=680192258]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 520.0
+offset_right = -948.0
+offset_bottom = -42.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_0hol4")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ColorRect/Button" unique_id=2081728788]
+position = Vector2(82, 43.999985)
+scale = Vector2(0.10275001, 0.06575)
+texture = ExtResource("2_epypp")
+
+[node name="Button2" type="Button" parent="CanvasLayer/ColorRect" unique_id=618549706]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 222.0
+offset_top = 520.0
+offset_right = -766.0
+offset_bottom = -42.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_q6r6c")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ColorRect/Button2" unique_id=1586829755]
+position = Vector2(82, 43.999985)
+scale = Vector2(0.10275001, 0.06575)
+texture = ExtResource("2_epypp")
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1733084210]
-position = Vector2(1144.0001, 331)
+position = Vector2(1265.0001, 318.00003)
 scale = Vector2(0.12331249, 0.1532006)
 texture = ExtResource("2_0e48y")
+
+[node name="employe" type="Sprite2D" parent="." unique_id=1281929772]
+position = Vector2(792, 430.00003)
+scale = Vector2(0.03882811, 0.04823915)
+texture = ExtResource("2_epypp")
+
+[node name="money_display" type="Label" parent="." unique_id=536565736]
+offset_left = 46.0
+offset_top = 32.0
+offset_right = 178.0
+offset_bottom = 73.0
+text = "alo"
+label_settings = SubResource("LabelSettings_0hol4")
+script = ExtResource("3_epypp")
