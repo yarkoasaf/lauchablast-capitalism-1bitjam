@@ -7,6 +7,8 @@ extends CharacterBody2D
 var going_up := false
 var area : bool = 1
 
+func _ready() -> void:
+	rotation = 0.75
 
 func _physics_process(_delta: float) -> void:
 	# Toggle on key press

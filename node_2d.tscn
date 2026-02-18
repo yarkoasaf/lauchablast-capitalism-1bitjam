@@ -63,7 +63,6 @@ radius = 61.42
 layer = 0
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1401518524]
-visible = false
 material = SubResource("ShaderMaterial_wtcfe")
 anchors_preset = 15
 anchor_right = 1.0
