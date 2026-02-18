@@ -120,6 +120,4 @@ shape = SubResource("RectangleShape2D_q6r6c")
 debug_color = Color(0.9935697, 0.07716196, 0, 0.41960785)
 
 [connection signal="body_entered" from="AreaGain" to="CharacterBody2D" method="_on_area_gain_body_entered"]
-[connection signal="body_exited" from="AreaGain" to="CharacterBody2D" method="_on_area_gain_body_exited"]
 [connection signal="body_entered" from="AreaGain/AreaLose" to="CharacterBody2D" method="_on_area_lose_body_entered"]
-[connection signal="body_exited" from="AreaGain/AreaLose" to="CharacterBody2D" method="_on_area_lose_body_exited"]

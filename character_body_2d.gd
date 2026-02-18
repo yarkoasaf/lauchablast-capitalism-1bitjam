@@ -28,16 +28,6 @@ func _physics_process(_delta: float) -> void:
 #enter
 func _on_area_lose_body_entered(body: Node2D) -> void:
 	area = 0
-	print("lose enter area")
 
 func _on_area_gain_body_entered(body: Node2D) -> void:
 	area = 1
-	print("gain enter area")
-
-#exit
-func _on_area_gain_body_exited(body: Node2D) -> void:
-	print("gain exit area")
-
-
-func _on_area_lose_body_exited(body: Node2D) -> void:
-	print("lose exit area")
