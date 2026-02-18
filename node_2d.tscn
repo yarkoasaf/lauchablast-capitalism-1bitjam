@@ -51,11 +51,11 @@ shader_parameter/dither_strength = 0.0030000001425
 [sub_resource type="LabelSettings" id="LabelSettings_0hol4"]
 font_size = 32
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6r6c"]
+size = Vector2(1152, 306)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_d21ai"]
 radius = 61.42
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6r6c"]
-size = Vector2(1152, 324)
 
 [node name="Node2D" type="Node2D" unique_id=915550732]
 
@@ -80,6 +80,25 @@ text = "Money: 0"
 label_settings = SubResource("LabelSettings_0hol4")
 script = ExtResource("3_epypp")
 
+[node name="StockArrow" type="Sprite2D" parent="." unique_id=1811553906]
+position = Vector2(1681.0001, 321.99997)
+rotation = 1.5707964
+scale = Vector2(0.079201326, 7.30031)
+texture = ExtResource("2_epypp")
+
+[node name="AreaGain" type="Area2D" parent="." unique_id=1054746678]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaGain" unique_id=517594626]
+position = Vector2(576, 153)
+shape = SubResource("RectangleShape2D_q6r6c")
+
+[node name="AreaLose" type="Area2D" parent="AreaGain" unique_id=528845262]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaGain/AreaLose" unique_id=1094923336]
+position = Vector2(576, 495)
+shape = SubResource("RectangleShape2D_q6r6c")
+debug_color = Color(0.9935697, 0.07716196, 0, 0.41960785)
+
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=550676385]
 position = Vector2(143, 101.000015)
 scale = Vector2(0.12899998, 0.12899998)
@@ -99,25 +118,6 @@ position = Vector2(-12, 0)
 scale = Vector2(0.9999998, 0.9999998)
 shape = SubResource("CircleShape2D_d21ai")
 debug_color = Color(1.504086e-07, 0.116840295, 0.14358988, 0.41960785)
-
-[node name="StockArrow" type="Sprite2D" parent="." unique_id=1811553906]
-position = Vector2(1681.0001, 321.99997)
-rotation = 1.5707964
-scale = Vector2(0.079201326, 7.30031)
-texture = ExtResource("2_epypp")
-
-[node name="AreaGain" type="Area2D" parent="." unique_id=1054746678]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaGain" unique_id=517594626]
-position = Vector2(576, 162)
-shape = SubResource("RectangleShape2D_q6r6c")
-
-[node name="AreaLose" type="Area2D" parent="AreaGain" unique_id=528845262]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaGain/AreaLose" unique_id=1094923336]
-position = Vector2(576, 486)
-shape = SubResource("RectangleShape2D_q6r6c")
-debug_color = Color(0.9935697, 0.07716196, 0, 0.41960785)
 
 [connection signal="body_entered" from="AreaGain" to="CharacterBody2D" method="_on_area_gain_body_entered"]
 [connection signal="body_entered" from="AreaGain/AreaLose" to="CharacterBody2D" method="_on_area_lose_body_entered"]
