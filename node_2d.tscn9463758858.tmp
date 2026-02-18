@@ -105,22 +105,24 @@ texture = ExtResource("2_epypp")
 [node name="money_display" type="Label" parent="." unique_id=536565736]
 offset_left = 46.0
 offset_top = 32.0
-offset_right = 187.0
-offset_bottom = 77.0
+offset_right = 178.0
+offset_bottom = 73.0
 text = "Money: 0"
 label_settings = SubResource("LabelSettings_0hol4")
 script = ExtResource("3_epypp")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=550676385]
-position = Vector2(168, 299.00003)
+position = Vector2(105, 297)
 scale = Vector2(0.12899998, 0.12899998)
 script = ExtResource("5_kdubu")
 
 [node name="StockArrow" type="Sprite2D" parent="CharacterBody2D" unique_id=487637095]
-scale = Vector2(0.52713156, 0.52713156)
+position = Vector2(-131.78297, -131.78297)
+scale = Vector2(0.5271318, 0.5271318)
 texture = ExtResource("5_q6r6c")
 
 [node name="Line2D" type="Line2D" parent="CharacterBody2D" unique_id=376259834]
-top_level = true
-points = PackedVector2Array(59.169006, 218.96133)
+position = Vector2(-327.63696, -1039.6364)
+scale = Vector2(5.5373063, 4.7480364)
+points = PackedVector2Array(59.16903, 218.96133)
 script = ExtResource("7_d21ai")
