@@ -4,6 +4,7 @@ extends Node
 signal money_changed(new_money: int)
 
 var money: int = 0
+var pantallas: PackedStringArray = ["a","s","d","f"]
 
 func gain_money(moneySum: int) -> void:
 	money += moneySum
