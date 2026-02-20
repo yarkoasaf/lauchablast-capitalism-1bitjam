@@ -1,7 +1,7 @@
 # player.gd
 extends CharacterBody2D
 
-@export var speed_y := 300.0
+@export var speed_y := 100.0
 @export var mapaLocal : TileMapLayer = null
 signal precioAccion(precio:int)
 signal porcentajeAccion(porcentaje:int)

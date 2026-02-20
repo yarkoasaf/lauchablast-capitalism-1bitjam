@@ -24,6 +24,10 @@ global="*uid://ddnto3yvwu4ea"
 window/size/mode=2
 window/stretch/mode="canvas_items"
 
+[global_group]
+
+player=""
+
 [input]
 
 wave={
