@@ -7,9 +7,17 @@ extends Area2D
 @export var lifetime: float = 5.0        # total seconds alive
 @export var fade_out_time: float = 0.2   # seconds (fade before despawn)
 
+#load textures
+@onready var sprite: Sprite2D = $Sprite2D
+const WOL_TEX: Texture2D = preload("res://assets/sprites/da wol.png")
+const REC_TEX: Texture2D = preload("res://assets/sprites/da rect.png")
+const PET_TEX: Texture2D = preload("res://assets/sprites/output-onlinepngtools.png")
+
 var _dying: bool = false
 
 func _ready() -> void:
+	#sprite random selector
+	load_texture()
 	# Fade in
 	modulate.a = 0.0
 	var t_in: Tween = create_tween()
@@ -46,3 +54,13 @@ func _on_body_entered(body: Node2D) -> void:
 		print("Hit player!")
 		if body.has_method("die"):
 			body.die()
+
+func load_texture():
+	var choice = randi_range(1,3)
+	match choice:
+		1:
+			sprite.texture = WOL_TEX
+		2:
+			sprite.texture = REC_TEX
+		3: 
+			sprite.texture = PET_TEX
