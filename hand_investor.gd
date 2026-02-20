@@ -16,11 +16,14 @@ var is_buy: bool
 var _time_left: float
 var _ui_timer: Timer
 var _dying: bool = false
+var buy_sell_text: String = ""
 
 func _ready() -> void:
 	# choose texture
 	is_buy = (randi_range(0, 1) == 0)
 	sprite.texture = BUY_TEX if is_buy else SELL_TEX
+	# choose text
+	buy_sell_text = "BUY!!!" if is_buy else "SELL!!!"
 
 	# init timer ui
 	_time_left = lifetime
@@ -46,7 +49,7 @@ func _tick_ui() -> void:
 func _update_ui() -> void:
 	var ratio: float = 0.0 if lifetime <= 0.0 else (_time_left / lifetime)
 	bar.value = ratio
-	label.text = "%0.1f" % _time_left
+	label.text = "%0.1f" % _time_left + " " + buy_sell_text
 
 func _begin_despawn() -> void:
 	if _dying:
