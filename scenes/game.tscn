@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b42ifjt26vhdu" path="res://scenes/pantallas.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://u377wgernark" path="res://scenes/pantalla.tscn" id="1_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://0kvu2crx0j76" path="res://assets/sprites/A.jpg" id="2_lnu2h"]
+[ext_resource type="AudioStream" uid="uid://ccmvsrrwke2r8" path="res://assets/watermello-hard-phonk-phonk-music-484666.mp3" id="4_lbhrr"]
 
 [sub_resource type="Shader" id="Shader_wtcfe"]
 code = "shader_type canvas_item;
@@ -94,3 +95,8 @@ anchors_preset = 0
 offset_right = 1153.0
 offset_bottom = 644.0
 theme = SubResource("Theme_0e48y")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=558295962]
+stream = ExtResource("4_lbhrr")
+volume_db = -10.0
+autoplay = true
