@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://befuy7mvrfcnb"]
+
+[ext_resource type="Script" uid="uid://b6bdila7gtm5d" path="res://hand_investor.gd" id="1_cgxcy"]
+[ext_resource type="Texture2D" uid="uid://c2h32mo207t06" path="res://assets/sprites/buy hand.png" id="2_vp34f"]
+
+[sub_resource type="Animation" id="Animation_i1ce3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.2617994]
+}
+
+[sub_resource type="Animation" id="Animation_vp34f"]
+resource_name = "balance"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.57434916, 0.5464163),
+"update": 0,
+"values": [0.08726646259971647, -0.08726646259971647]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i1ce3"]
+_data = {
+&"RESET": SubResource("Animation_i1ce3"),
+&"balance": SubResource("Animation_vp34f")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5a66i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vp34f"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i1ce3"]
+bg_color = Color(11.708, 11.708, 11.708, 1)
+
+[node name="HandInvestor" type="Node2D" unique_id=256795261]
+script = ExtResource("1_cgxcy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=98654012]
+libraries/ = SubResource("AnimationLibrary_i1ce3")
+autoplay = &"balance"
+
+[node name="Pivot" type="Node2D" parent="." unique_id=862812106]
+position = Vector2(1.3552527e-20, -142)
+rotation = 0.2617994
+
+[node name="Hand" type="Sprite2D" parent="Pivot" unique_id=511806067]
+position = Vector2(7.7446613, -202.91876)
+scale = Vector2(0.64357257, 0.64357257)
+texture = ExtResource("2_vp34f")
+
+[node name="UI" type="Node2D" parent="Pivot" unique_id=1470107453]
+position = Vector2(125, -288)
+
+[node name="Panel" type="Control" parent="Pivot/UI" unique_id=1062233995]
+material = SubResource("ShaderMaterial_5a66i")
+layout_mode = 3
+anchors_preset = 0
+offset_left = -235.0
+offset_top = 246.0
+offset_right = -17.0
+offset_bottom = 277.0
+metadata/_edit_use_anchors_ = true
+
+[node name="TimeBar" type="ProgressBar" parent="Pivot/UI/Panel" unique_id=1294786096]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.47973186
+anchor_right = 0.36398876
+anchor_bottom = 0.5817775
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 221.0
+offset_bottom = 30.0
+theme_override_styles/background = SubResource("StyleBoxFlat_vp34f")
+theme_override_styles/fill = SubResource("StyleBoxFlat_i1ce3")
+max_value = 1.0
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="TimeLabel" type="Label" parent="Pivot/UI/Panel" unique_id=2081837254]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.6701838
+anchor_top = 0.7183204
+anchor_right = 0.63794774
+anchor_bottom = 4.3957396
+offset_left = 90.0
+offset_top = 31.0
+offset_right = 130.0
+offset_bottom = 54.0
+theme_override_font_sizes/font_size = 100
+text = "10.3"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
