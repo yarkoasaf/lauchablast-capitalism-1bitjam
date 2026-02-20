@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://bim8brnao5h6a" path="res://assets/sprites/Sprite-0001.png" id="5_ie4f6"]
 [ext_resource type="Script" uid="uid://8wu7wxe312kq" path="res://scripts/GameControl/spawner.gd" id="8_p4ppb"]
 [ext_resource type="PackedScene" uid="uid://c6wvhr4hqibvk" path="res://scenes/Obstacle.tscn" id="9_8dxf4"]
+[ext_resource type="Script" uid="uid://divu6y4a3ccbq" path="res://scenes/hand_investor_spawner.gd" id="10_e1ybv"]
+[ext_resource type="PackedScene" uid="uid://befuy7mvrfcnb" path="res://scenes/hand_investor.tscn" id="11_qkkgh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d21ai"]
 radius = 55.226807
@@ -145,6 +147,11 @@ spawn_scene = ExtResource("9_8dxf4")
 [node name="SpawnShape" type="CollisionShape2D" parent="Node2D/SpawnZone" unique_id=590621621]
 position = Vector2(1750.625, -1114)
 shape = SubResource("RectangleShape2D_p4ppb")
+
+[node name="HandInvestorSpawner" type="Node2D" parent="." unique_id=952570394]
+position = Vector2(1524, -17)
+script = ExtResource("10_e1ybv")
+hand_investor_scene = ExtResource("11_qkkgh")
 
 [connection signal="cambioPorcentajeCambio" from="." to="ArrowBody/Porcentaje" method="_on_pantalla_cambio_porcentaje_cambio"]
 [connection signal="cambioPrecio" from="." to="SHARE PRICE/Precio" method="_on_pantalla_cambio_precio"]
