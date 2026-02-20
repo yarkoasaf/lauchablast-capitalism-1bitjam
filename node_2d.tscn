@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://c44wcoh434kqa"]
 
 [ext_resource type="PackedScene" uid="uid://u377wgernark" path="res://scenes/pantalla.tscn" id="1_epypp"]
-[ext_resource type="AudioStream" uid="uid://626dkusjp6kc" path="res://assets/watermello-hard-phonk-phonk-music-484666.mp3" id="3_epypp"]
 [ext_resource type="Texture2D" uid="uid://0kvu2crx0j76" path="res://assets/sprites/A.jpg" id="6_kdubu"]
 
 [sub_resource type="Shader" id="Shader_wtcfe"]
@@ -95,7 +94,3 @@ anchors_preset = 0
 offset_right = 1153.0
 offset_bottom = 644.0
 theme = SubResource("Theme_0e48y")
-
-[node name="WatermelloHardPhonkPhonkMusic484666" type="AudioStreamPlayer" parent="." unique_id=373980899]
-stream = ExtResource("3_epypp")
-autoplay = true

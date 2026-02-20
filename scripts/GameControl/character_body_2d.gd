@@ -11,16 +11,9 @@ var precioCambio:= 0
 var ultimoPrecio:= 0
 var letraPantalla: String = ""
 
-#temp
-var _prev_pos: Vector2
-
-
 func _ready() -> void:
 	letraPantalla =get_parent().get("letraPantalla")
 	print(letraPantalla)
-	
-	#temp
-	_prev_pos = global_position
 
 func calcularPrecio() -> void:
 	if mapaLocal == null:
@@ -41,7 +34,7 @@ func calcularPrecio() -> void:
 	
 
 #maneja movimiento de la flecha
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	# Toggle on key press
 	if Input.is_action_just_pressed("wave" + letraPantalla):
 		going_up = !going_up
@@ -52,10 +45,4 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	calcularPrecio()
 
-	# REAL velocity (after collisions)
-	var safe_delta: float = maxf(delta, 0.000001)
-	var real_velocity: Vector2 = (global_position - _prev_pos) / safe_delta
-	_prev_pos = global_position
-
-	if real_velocity.length() == 0.0:
-		going_up = !going_up
+	
