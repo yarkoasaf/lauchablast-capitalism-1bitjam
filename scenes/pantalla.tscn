@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://bi3rgd21ge8o1" path="res://scripts/UI/LabelSets/cambio.gd" id="4_kiy4r"]
 [ext_resource type="Script" uid="uid://d26tw45nbi51s" path="res://scripts/UI/LabelSets/precio.gd" id="4_x637a"]
 [ext_resource type="Texture2D" uid="uid://bim8brnao5h6a" path="res://assets/sprites/Sprite-0001.png" id="5_ie4f6"]
+[ext_resource type="Script" uid="uid://8wu7wxe312kq" path="res://scripts/GameControl/spawner.gd" id="8_p4ppb"]
+[ext_resource type="PackedScene" uid="uid://c6wvhr4hqibvk" path="res://scenes/Obstacle.tscn" id="9_8dxf4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d21ai"]
 radius = 55.226807
@@ -59,17 +61,19 @@ size = Vector2(1769, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ie4f6"]
 size = Vector2(1757, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p4ppb"]
+size = Vector2(22.75, 882)
+
 [node name="pantalla" type="Node2D" unique_id=1778851164]
 script = ExtResource("1_ie4f6")
 
-[node name="ArrowBody" type="CharacterBody2D" parent="." unique_id=816532424 node_paths=PackedStringArray("mapaLocal")]
+[node name="ArrowBody" type="CharacterBody2D" parent="." unique_id=816532424 node_paths=PackedStringArray("mapaLocal") groups=["player"]]
 position = Vector2(696, -1336)
 scale = Vector2(0.2, 0.2)
 motion_mode = 1
 slide_on_ceiling = false
 wall_min_slide_angle = 0.0
 script = ExtResource("1_jrcl5")
-speed_y = 150.0
 mapaLocal = NodePath("../MapaLocal")
 
 [node name="ArrowSprite" type="Sprite2D" parent="ArrowBody" unique_id=638670171]
@@ -131,6 +135,16 @@ offset_bottom = 379.0
 theme_override_font_sizes/font_size = 100
 text = "$100"
 script = ExtResource("4_x637a")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=209979300]
+script = ExtResource("8_p4ppb")
+spawn_scene = ExtResource("9_8dxf4")
+
+[node name="SpawnZone" type="Area2D" parent="Node2D" unique_id=2036837854]
+
+[node name="SpawnShape" type="CollisionShape2D" parent="Node2D/SpawnZone" unique_id=590621621]
+position = Vector2(1750.625, -1114)
+shape = SubResource("RectangleShape2D_p4ppb")
 
 [connection signal="cambioPorcentajeCambio" from="." to="ArrowBody/Porcentaje" method="_on_pantalla_cambio_porcentaje_cambio"]
 [connection signal="cambioPrecio" from="." to="SHARE PRICE/Precio" method="_on_pantalla_cambio_precio"]
