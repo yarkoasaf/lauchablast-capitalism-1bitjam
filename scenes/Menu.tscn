@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://bcqkwn05q1g2h"]
+
+[ext_resource type="Shader" uid="uid://jadafr0lj4tf" path="res://scenes/Menu.gdshader" id="1_11y2r"]
+[ext_resource type="Script" uid="uid://dx1tha6kjjaj4" path="res://scenes/loader.gd" id="1_b6cxs"]
+[ext_resource type="Theme" uid="uid://nrq7fgbwoq5c" path="res://temaJuego.tres" id="1_o0tnf"]
+[ext_resource type="Texture2D" uid="uid://dhv4u4t3vkgge" path="res://assets/menu/background.png" id="2_o0tnf"]
+[ext_resource type="Script" uid="uid://dc61otfet0adk" path="res://scenes/button.gd" id="3_aaywf"]
+[ext_resource type="Texture2D" uid="uid://bgm1pcrmxjvem" path="res://assets/menu/card.png" id="3_jmdev"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b6cxs"]
+shader = ExtResource("1_11y2r")
+shader_parameter/shaking = true
+shader_parameter/amplitude = 1.0
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_speed = 1.0
+
+[node name="Menu" type="Node2D" unique_id=1540693709]
+script = ExtResource("1_b6cxs")
+
+[node name="Control" type="Control" parent="." unique_id=1003369074]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 96.0
+offset_top = 307.0
+offset_right = 447.0
+offset_bottom = 595.0
+
+[node name="Button" type="Button" parent="Control" unique_id=821846820]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 29.0
+offset_right = 271.0
+offset_bottom = 117.0
+scale = Vector2(1, 0.95999026)
+theme = ExtResource("1_o0tnf")
+theme_override_font_sizes/font_size = 64
+text = "START"
+script = ExtResource("3_aaywf")
+
+[node name="Label" type="Label" parent="Control" unique_id=2098624826]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 173.0
+offset_right = 253.0
+offset_bottom = 196.0
+text = "BUY LOW SELL HIGH"
+
+[node name="Label2" type="Label" parent="Control" unique_id=101469306]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 125.0
+offset_right = 326.0
+offset_bottom = 148.0
+text = "USE A S D F TO CONTROL THE MARKET"
+
+[node name="Background" type="Sprite2D" parent="." unique_id=340392351]
+material = SubResource("ShaderMaterial_b6cxs")
+position = Vector2(579, 322)
+texture = ExtResource("2_o0tnf")
+metadata/_edit_lock_ = true
+
+[node name="Card" type="Sprite2D" parent="." unique_id=313429912]
+position = Vector2(565, 319)
+texture = ExtResource("3_jmdev")
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
