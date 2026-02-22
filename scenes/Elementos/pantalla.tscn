@@ -8,9 +8,9 @@
 [ext_resource type="Script" uid="uid://d26tw45nbi51s" path="res://scripts/UI/LabelSets/precio.gd" id="4_x637a"]
 [ext_resource type="Texture2D" uid="uid://bim8brnao5h6a" path="res://assets/sprites/Sprite-0001.png" id="5_ie4f6"]
 [ext_resource type="Script" uid="uid://8wu7wxe312kq" path="res://scripts/GameControl/spawner.gd" id="8_p4ppb"]
-[ext_resource type="PackedScene" uid="uid://c6wvhr4hqibvk" path="res://scenes/Obstacle.tscn" id="9_8dxf4"]
-[ext_resource type="Script" uid="uid://divu6y4a3ccbq" path="res://scenes/hand_investor_spawner.gd" id="10_e1ybv"]
-[ext_resource type="PackedScene" uid="uid://befuy7mvrfcnb" path="res://scenes/hand_investor.tscn" id="11_qkkgh"]
+[ext_resource type="PackedScene" uid="uid://c6wvhr4hqibvk" path="res://scenes/Elementos/Obstacle.tscn" id="9_8dxf4"]
+[ext_resource type="Script" uid="uid://divu6y4a3ccbq" path="res://scripts/GameControl/hand_investor_spawner.gd" id="10_e1ybv"]
+[ext_resource type="PackedScene" uid="uid://befuy7mvrfcnb" path="res://scenes/Elementos/hand_investor.tscn" id="11_qkkgh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d21ai"]
 radius = 55.226807

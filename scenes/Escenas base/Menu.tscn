@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bcqkwn05q1g2h"]
 
-[ext_resource type="Shader" uid="uid://jadafr0lj4tf" path="res://scenes/Menu.gdshader" id="1_11y2r"]
-[ext_resource type="Script" uid="uid://dx1tha6kjjaj4" path="res://scenes/loader.gd" id="1_b6cxs"]
+[ext_resource type="Shader" uid="uid://jadafr0lj4tf" path="res://scenes/Escenas base/Menu.gdshader" id="1_11y2r"]
+[ext_resource type="Script" uid="uid://dx1tha6kjjaj4" path="res://scripts/loader.gd" id="1_b6cxs"]
 [ext_resource type="Theme" uid="uid://nrq7fgbwoq5c" path="res://temaJuego.tres" id="1_o0tnf"]
 [ext_resource type="Texture2D" uid="uid://dhv4u4t3vkgge" path="res://assets/menu/background.png" id="2_o0tnf"]
-[ext_resource type="Script" uid="uid://dc61otfet0adk" path="res://scenes/button.gd" id="3_aaywf"]
+[ext_resource type="Script" uid="uid://dc61otfet0adk" path="res://scripts/GameControl/button.gd" id="3_aaywf"]
 [ext_resource type="Texture2D" uid="uid://bgm1pcrmxjvem" path="res://assets/menu/card.png" id="3_jmdev"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b6cxs"]

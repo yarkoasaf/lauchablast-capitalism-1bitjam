@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://befuy7mvrfcnb"]
 
-[ext_resource type="Script" uid="uid://b6bdila7gtm5d" path="res://hand_investor.gd" id="1_cgxcy"]
-[ext_resource type="Texture2D" uid="uid://c2h32mo207t06" path="res://assets/sprites/buy hand.png" id="2_vp34f"]
+[ext_resource type="Script" uid="uid://b6bdila7gtm5d" path="res://scripts/GameControl/hand_investor.gd" id="1_jqlf2"]
+[ext_resource type="Texture2D" uid="uid://c2h32mo207t06" path="res://assets/sprites/buy hand.png" id="2_7y8cp"]
 
 [sub_resource type="Animation" id="Animation_i1ce3"]
 length = 0.001
@@ -49,7 +49,7 @@ bg_color = Color(0, 0, 0, 1)
 bg_color = Color(11.708, 11.708, 11.708, 1)
 
 [node name="HandInvestor" type="Node2D" unique_id=256795261]
-script = ExtResource("1_cgxcy")
+script = ExtResource("1_jqlf2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=98654012]
 libraries/ = SubResource("AnimationLibrary_i1ce3")
@@ -62,7 +62,7 @@ rotation = 0.2617994
 [node name="Hand" type="Sprite2D" parent="Pivot" unique_id=511806067]
 position = Vector2(7.7446613, -202.91876)
 scale = Vector2(0.64357257, 0.64357257)
-texture = ExtResource("2_vp34f")
+texture = ExtResource("2_7y8cp")
 
 [node name="UI" type="Node2D" parent="Pivot" unique_id=1470107453]
 position = Vector2(125, -288)
