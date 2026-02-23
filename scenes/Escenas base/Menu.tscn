@@ -40,10 +40,10 @@ script = ExtResource("3_aaywf")
 
 [node name="Label" type="Label" parent="Control" unique_id=2098624826]
 layout_mode = 0
-offset_left = 96.0
-offset_top = 173.0
-offset_right = 253.0
-offset_bottom = 196.0
+offset_left = 104.0
+offset_top = 181.0
+offset_right = 261.0
+offset_bottom = 204.0
 text = "BUY LOW SELL HIGH"
 
 [node name="Label3" type="Label" parent="Control" unique_id=1669283672]
@@ -56,9 +56,9 @@ text = "A GAME BY LAUCHABLAST"
 
 [node name="Label2" type="Label" parent="Control" unique_id=101469306]
 layout_mode = 0
-offset_left = 32.0
+offset_left = 48.0
 offset_top = 125.0
-offset_right = 326.0
+offset_right = 342.0
 offset_bottom = 148.0
 text = "USE [ A ] TO CONTROL THE MARKET"
 

@@ -263,6 +263,7 @@ text = "$100.000"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=558295962]
 stream = ExtResource("4_ph21u")
 volume_db = -10.0
+autoplay = true
 
 [node name="TituloA" type="Sprite2D" parent="." unique_id=519469062]
 position = Vector2(184.00002, 224.00002)

@@ -8,3 +8,5 @@
 position = Vector2(580, 270.75)
 scale = Vector2(1.4300001, 1.3855535)
 texture = ExtResource("1_etowh")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2111102497]
