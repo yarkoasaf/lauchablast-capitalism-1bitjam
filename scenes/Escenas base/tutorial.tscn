@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://b1ot8al3yrx8t"]
+
+[ext_resource type="PackedScene" uid="uid://u377wgernark" path="res://scenes/Elementos/pantalla.tscn" id="1_if1je"]
+[ext_resource type="Script" uid="uid://b67qorv07dy0u" path="res://scenes/Escenas base/tutorial.gd" id="1_s8ys4"]
+[ext_resource type="AudioStream" uid="uid://do56pylsri1tj" path="res://assets/alex_jauk-cooler-ambience-noise-389190.mp3" id="3_if1je"]
+
+[node name="tutorial" type="Node2D" unique_id=586965797]
+script = ExtResource("1_s8ys4")
+
+[node name="pantalla" parent="." unique_id=1778851164 instance=ExtResource("1_if1je")]
+position = Vector2(433.00003, 460)
+scale = Vector2(0.15, 0.15)
+letraPantalla = "A"
+
+[node name="Porcentaje" parent="pantalla/ArrowBody" parent_id_path=PackedInt32Array(1778851164, 816532424) index="2" unique_id=157622399]
+metadata/_edit_use_anchors_ = true
+
+[node name="ACountLabel" type="Label" parent="." unique_id=390392516]
+offset_left = 369.0
+offset_top = 106.0
+offset_right = 750.0
+offset_bottom = 202.0
+text = "aaaaaaaaaaaaaaaaaaaaaaa"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="AlexJaukCoolerAmbienceNoise389191" type="AudioStreamPlayer" parent="." unique_id=281051173]
+stream = ExtResource("3_if1je")
+volume_db = -20.0
+autoplay = true
+
+[editable path="pantalla"]

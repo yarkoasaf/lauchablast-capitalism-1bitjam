@@ -28,9 +28,9 @@ offset_bottom = 595.0
 
 [node name="Button" type="Button" parent="Control" unique_id=821846820]
 layout_mode = 0
-offset_left = 80.0
+offset_left = 65.0
 offset_top = 29.0
-offset_right = 271.0
+offset_right = 286.0
 offset_bottom = 117.0
 scale = Vector2(1, 0.95999026)
 theme = ExtResource("1_o0tnf")
@@ -52,7 +52,7 @@ offset_left = 32.0
 offset_top = 125.0
 offset_right = 326.0
 offset_bottom = 148.0
-text = "USE A S D F TO CONTROL THE MARKET"
+text = "USE [ A ] TO CONTROL THE MARKET"
 
 [node name="Background" type="Sprite2D" parent="." unique_id=340392351]
 material = SubResource("ShaderMaterial_b6cxs")

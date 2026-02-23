@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://0kvu2crx0j76" path="res://assets/sprites/A.jpg" id="3_j80bw"]
 [ext_resource type="AudioStream" uid="uid://ccmvsrrwke2r8" path="res://assets/watermello-hard-phonk-phonk-music-484666.mp3" id="4_ph21u"]
 
-[sub_resource type="Shader" id="Shader_wtcfe"]
+[sub_resource type="Shader" id="Shader_xr2s6"]
 code = "shader_type canvas_item;
 
 uniform sampler2D screen_tex : hint_screen_texture;
@@ -40,7 +40,7 @@ void fragment() {
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wtcfe"]
-shader = SubResource("Shader_wtcfe")
+shader = SubResource("Shader_xr2s6")
 shader_parameter/color_a = Color(0.03137255, 0.1254902, 0.24313726, 1)
 shader_parameter/color_b = Color(0.65882355, 0.7490196, 0.8039216, 1)
 shader_parameter/threshold = 0.4230000200925
@@ -71,6 +71,12 @@ func actualizar() -> void:
 position = Vector2(64, 504.00003)
 scale = Vector2(0.15, 0.15)
 letraPantalla = "A"
+
+[node name="SpawnZone" parent="pantallas/pantalla/Node2D" parent_id_path=PackedInt32Array(1778851164, 209979300) index="0" unique_id=2036837854]
+visible = false
+
+[node name="SpawnShape" parent="pantallas/pantalla/Node2D/SpawnZone" index="0" unique_id=590621621]
+visible = false
 
 [node name="pantalla2" parent="pantallas" unique_id=1937358492 instance=ExtResource("2_govxg")]
 visible = false
@@ -121,3 +127,5 @@ offset_right = 220.0
 offset_bottom = 76.0
 text = "MONEY: "
 script = SubResource("GDScript_1nay6")
+
+[editable path="pantallas/pantalla"]
