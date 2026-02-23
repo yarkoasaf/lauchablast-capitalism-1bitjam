@@ -52,12 +52,14 @@ func _update_ui() -> void:
 	label.text = "%0.1f" % _time_left + " " + buy_sell_text
 
 func _begin_despawn() -> void:
+	print("begindespawn")
 	if _dying:
 		return
 	_dying = true
 
 	if _ui_timer:
 		_ui_timer.stop()
+	
 
 	var t := create_tween()
 	t.tween_property(self, "modulate:a", 0.0, fade_out_time)

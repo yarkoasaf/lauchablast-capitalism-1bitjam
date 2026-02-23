@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://d1xi1wyyq161" path="res://scripts/GameControl/character_body_2d.gd" id="1_jrcl5"]
 [ext_resource type="Texture2D" uid="uid://cukrjoyvo0163" path="res://assets/sprites/stock-arrow.png" id="2_ie4f6"]
 [ext_resource type="Script" uid="uid://cj355wk5m0526" path="res://scripts/VisualElements/trail.gd" id="3_x637a"]
+[ext_resource type="Theme" uid="uid://nrq7fgbwoq5c" path="res://temaJuego.tres" id="4_fe6ps"]
 [ext_resource type="Script" uid="uid://bi3rgd21ge8o1" path="res://scripts/UI/LabelSets/cambio.gd" id="4_kiy4r"]
 [ext_resource type="Script" uid="uid://d26tw45nbi51s" path="res://scripts/UI/LabelSets/precio.gd" id="4_x637a"]
 [ext_resource type="Texture2D" uid="uid://bim8brnao5h6a" path="res://assets/sprites/Sprite-0001.png" id="5_ie4f6"]
@@ -93,6 +94,7 @@ offset_left = 174.99998
 offset_top = -164.99998
 offset_right = 746.0
 offset_bottom = 108.000015
+theme = ExtResource("4_fe6ps")
 theme_override_font_sizes/font_size = 250
 text = "%0.00"
 script = ExtResource("4_kiy4r")
@@ -121,10 +123,11 @@ scroll_left_speed = 600.0
 BodyToFollow = NodePath("../ArrowBody")
 
 [node name="SHARE PRICE" type="Label" parent="." unique_id=1336846391]
-offset_left = 1092.0
-offset_top = -1599.0
-offset_right = 2326.0
-offset_bottom = -1326.0
+offset_left = 1063.0
+offset_top = -1596.0
+offset_right = 2297.0
+offset_bottom = -1323.0
+theme = ExtResource("4_fe6ps")
 theme_override_font_sizes/font_size = 100
 text = "SHARE PRICE"
 
@@ -138,13 +141,13 @@ theme_override_font_sizes/font_size = 100
 text = "$100"
 script = ExtResource("4_x637a")
 
-[node name="Node2D" type="Node2D" parent="." unique_id=209979300]
+[node name="spawner" type="Node2D" parent="." unique_id=209979300]
 script = ExtResource("8_p4ppb")
 spawn_scene = ExtResource("9_8dxf4")
 
-[node name="SpawnZone" type="Area2D" parent="Node2D" unique_id=2036837854]
+[node name="SpawnZone" type="Area2D" parent="spawner" unique_id=2036837854]
 
-[node name="SpawnShape" type="CollisionShape2D" parent="Node2D/SpawnZone" unique_id=590621621]
+[node name="SpawnShape" type="CollisionShape2D" parent="spawner/SpawnZone" unique_id=590621621]
 position = Vector2(1750.625, -1114)
 shape = SubResource("RectangleShape2D_p4ppb")
 
