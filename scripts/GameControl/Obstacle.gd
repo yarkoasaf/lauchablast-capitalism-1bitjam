@@ -52,7 +52,7 @@ func _begin_despawn() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		print("Hit player!")
-		global.lose_money(100)
+		global.lose_money(200)
 		if body.has_method("die"):
 			body.die()
 

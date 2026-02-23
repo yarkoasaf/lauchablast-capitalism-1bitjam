@@ -60,7 +60,7 @@ offset_left = 32.0
 offset_top = 125.0
 offset_right = 326.0
 offset_bottom = 148.0
-text = "USE [ A ] TO CONTROL THE MARKET"
+text = "USE [A] [S] [D] TO CONTROL THE MARKET"
 
 [node name="Background" type="Sprite2D" parent="." unique_id=340392351]
 material = SubResource("ShaderMaterial_b6cxs")

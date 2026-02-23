@@ -6,6 +6,10 @@ signal cambioPrecio(precioShare)
 signal cambioPorcentajeCambio(porcentajeCambio) 
 signal compraronPantalla()
 
+# Buy Sell count
+var buy_count : int = 0
+var sell_count : int = 0
+
 @export var letraPantalla: String = "":
 	get:
 		return letraPantalla
@@ -40,6 +44,10 @@ func _on_arrow_body_porcentaje_accion(porcentaje: int) -> void:
 func _on_hand_investor_spawner_transaccion(is_buy: bool) -> void:
 	if is_buy :
 		global.buy_shares(precioShare)
+		buy_count +=1
+		print(buy_count)
 	else :
 		global.sell_shaders(precioShare)
+		sell_count += 1
+		print(sell_count)
 	pass # Replace with function body.

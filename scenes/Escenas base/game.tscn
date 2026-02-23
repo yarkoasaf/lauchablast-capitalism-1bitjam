@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cuqbs3y2wewwb" path="res://assets/sprites/TITULO D.png" id="8_8litq"]
 [ext_resource type="Texture2D" uid="uid://dxuav8fpx3fx2" path="res://assets/sprites/beach.png" id="9_sth56"]
 
-[sub_resource type="Shader" id="Shader_xr2s6"]
+[sub_resource type="Shader" id="Shader_sth56"]
 code = "shader_type canvas_item;
 
 uniform sampler2D screen_tex : hint_screen_texture;
@@ -47,7 +47,7 @@ void fragment() {
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wtcfe"]
-shader = SubResource("Shader_xr2s6")
+shader = SubResource("Shader_sth56")
 shader_parameter/color_a = Color(0.03137255, 0.1254902, 0.24313726, 1)
 shader_parameter/color_b = Color(0.65882355, 0.7490196, 0.8039216, 1)
 shader_parameter/threshold = 0.4230000200925
@@ -214,20 +214,26 @@ theme = SubResource("Theme_0e48y")
 
 [node name="compra S" type="Label" parent="Control" unique_id=1181992201]
 layout_mode = 0
-offset_left = 544.0
-offset_top = 368.0
-offset_right = 621.0
-offset_bottom = 391.0
-text = "$ 10 000"
+offset_left = 491.0
+offset_top = 361.5
+offset_right = 683.0
+offset_bottom = 430.5
+text = "$ 10 000
+Press [ S ] to buy
+Sunset Solutions .Co"
+horizontal_alignment = 1
 script = SubResource("GDScript_govxg")
 
 [node name="compra D" type="Label" parent="Control" unique_id=458905896]
 layout_mode = 0
-offset_left = 920.0
-offset_top = 368.0
-offset_right = 997.0
-offset_bottom = 391.0
-text = "$ 10 000"
+offset_left = 878.0
+offset_top = 364.5
+offset_right = 1070.0
+offset_bottom = 433.5
+text = "$ 10 000
+Press [ D ] to buy
+Divine Services .LTD"
+horizontal_alignment = 1
 script = SubResource("GDScript_j80bw")
 
 [node name="MONEY" type="Label" parent="Control" unique_id=202557974]
@@ -263,6 +269,8 @@ text = "$100.000"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=558295962]
 stream = ExtResource("4_ph21u")
 volume_db = -10.0
+autoplay = true
+parameters/looping = true
 
 [node name="TituloA" type="Sprite2D" parent="." unique_id=519469062]
 position = Vector2(184.00002, 224.00002)

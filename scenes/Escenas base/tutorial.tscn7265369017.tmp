@@ -58,10 +58,6 @@ letraPantalla = "A"
 [node name="Porcentaje" parent="pantalla/ArrowBody" parent_id_path=PackedInt32Array(1778851164, 816532424) index="2" unique_id=157622399]
 metadata/_edit_use_anchors_ = true
 
-[node name="spawnerOBS" parent="pantalla" index="5" unique_id=209979300]
-min_wait = 1.0
-max_wait = 4.0
-
 [node name="ACountLabel" type="Label" parent="." unique_id=390392516]
 offset_left = 369.0
 offset_top = 106.0
@@ -83,7 +79,6 @@ grow_vertical = 2
 stream = ExtResource("3_if1je")
 volume_db = -10.0
 autoplay = true
-parameters/looping = true
 
 [node name="background" type="Sprite2D" parent="." unique_id=201995447]
 z_index = -2
