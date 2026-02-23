@@ -17,16 +17,32 @@ var _timer: Timer
 func _ready() -> void:
 	randomize()
 
+	# Guards (keep these)
+	if spawn_scene == null:
+		push_error("Spawner: spawn_scene is NULL. Assign it in the Inspector.")
+		return
+	if spawn_zone == null:
+		push_error("Spawner: SpawnZone not found. Check $SpawnZone path.")
+		return
+	if col == null:
+		push_error("Spawner: SpawnZone/SpawnShape not found. Check node path.")
+		return
+	if col.shape == null:
+		push_error("Spawner: SpawnShape has no Shape2D assigned in the inspector.")
+		return
+	if min_wait <= 0.0 or max_wait < min_wait:
+		push_error("Spawner: Invalid wait range (min_wait must be > 0 and max_wait >= min_wait).")
+		return
+
 	_timer = Timer.new()
 	_timer.one_shot = false
 	_timer.timeout.connect(_on_timer_timeout)
 	add_child(_timer)
 
-	# apply initial state
 	set_spawn_enabled(spawn_enabled)
 
 
-# --- Public API (call these from other nodes or signals) ---
+# --- Public API ---
 
 func start_spawning() -> void:
 	set_spawn_enabled(true)
@@ -63,7 +79,6 @@ func _on_timer_timeout() -> void:
 
 	_spawn_one()
 
-	# If you want a new random interval every spawn tick:
 	if randomize_interval_each_tick:
 		_set_next_wait_time()
 		_timer.start()
@@ -73,36 +88,35 @@ func _set_next_wait_time() -> void:
 	_timer.wait_time = randf_range(min_wait, max_wait)
 
 
-# --- Spawn logic ---
+# --- Spawn logic (fixed placement) ---
 
 func _spawn_one() -> void:
-	if spawn_scene == null:
-		push_error("Assign spawn_scene in the Inspector.")
-		return
-
-	var p_local_to_zone: Vector2 = random_point_inside_area_local_to_zone()
+	var p_global: Vector2 = random_point_inside_area_global()
 
 	var inst := spawn_scene.instantiate()
-	spawn_zone.add_child(inst)
+
+	# Put obstacles somewhere stable (not under SpawnZone)
+	var container := get_parent()
+	if container == null:
+		container = self
+	container.add_child(inst)
 
 	if inst is Node2D:
-		(inst as Node2D).position = p_local_to_zone  # local to SpawnZone
+		(inst as Node2D).global_position = p_global
 
 
-func random_point_inside_area_local_to_zone() -> Vector2:
-	var rect: RectangleShape2D = col.shape as RectangleShape2D
-	if rect == null:
-		push_error("SpawnShape must use RectangleShape2D.")
-		return Vector2.ZERO
+func random_point_inside_area_global() -> Vector2:
+	var shape: Shape2D = col.shape
+	if not (shape is RectangleShape2D):
+		push_error("Spawner: SpawnShape must use RectangleShape2D. Current: %s" % shape.get_class())
+		return spawn_zone.global_position
 
+	var rect: RectangleShape2D = shape as RectangleShape2D
 	var ext: Vector2 = rect.extents
 
-	# random point in CollisionShape2D local space
-	var p_shape_local := Vector2(
+	var p_shape_local: Vector2 = Vector2(
 		randf_range(-ext.x, ext.x),
 		randf_range(-ext.y, ext.y)
 	)
 
-	# convert to global, then to SpawnZone local
-	var p_global := col.to_global(p_shape_local)
-	return spawn_zone.to_local(p_global)
+	return col.to_global(p_shape_local)
