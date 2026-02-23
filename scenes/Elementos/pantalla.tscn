@@ -77,6 +77,7 @@ motion_mode = 1
 slide_on_ceiling = false
 wall_min_slide_angle = 0.0
 script = ExtResource("1_jrcl5")
+speed_y = 90.0
 mapaLocal = NodePath("../MapaLocal")
 
 [node name="ArrowSprite" type="Sprite2D" parent="ArrowBody" unique_id=638670171]
@@ -141,13 +142,15 @@ theme_override_font_sizes/font_size = 100
 text = "$100"
 script = ExtResource("4_x637a")
 
-[node name="spawner" type="Node2D" parent="." unique_id=209979300]
+[node name="spawnerOBS" type="Node2D" parent="." unique_id=209979300]
 script = ExtResource("8_p4ppb")
 spawn_scene = ExtResource("9_8dxf4")
+min_wait = 5.0
+max_wait = 20.0
 
-[node name="SpawnZone" type="Area2D" parent="spawner" unique_id=2036837854]
+[node name="SpawnZone" type="Area2D" parent="spawnerOBS" unique_id=2036837854]
 
-[node name="SpawnShape" type="CollisionShape2D" parent="spawner/SpawnZone" unique_id=590621621]
+[node name="SpawnShape" type="CollisionShape2D" parent="spawnerOBS/SpawnZone" unique_id=590621621]
 position = Vector2(1752.5, -792)
 shape = SubResource("RectangleShape2D_p4ppb")
 
@@ -160,3 +163,4 @@ hand_investor_scene = ExtResource("11_qkkgh")
 [connection signal="cambioPrecio" from="." to="SHARE PRICE/Precio" method="_on_pantalla_cambio_precio"]
 [connection signal="porcentajeAccion" from="ArrowBody" to="." method="_on_arrow_body_porcentaje_accion"]
 [connection signal="precioAccion" from="ArrowBody" to="." method="_on_arrow_body_precio_accion"]
+[connection signal="transaccion" from="HandInvestorSpawner" to="." method="_on_hand_investor_spawner_transaccion"]

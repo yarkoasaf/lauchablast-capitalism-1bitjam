@@ -25,8 +25,6 @@ func _ready() -> void:
 func calcularPrecio() -> void:
 	if mapaLocal == null:
 		return
-		
-
 	var tile_coords = mapaLocal.local_to_map(position)
 	var precio = tile_coords.y *-1
 	#precio corresponde a la posicion de la flecha dentro de MapaLocal

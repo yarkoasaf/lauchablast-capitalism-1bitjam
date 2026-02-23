@@ -30,8 +30,16 @@ func _physics_process(_delta: float) -> void:
 		comprarPantalla()
 
 func _on_arrow_body_precio_accion(precio: int) -> void:
-	precioShare = precio
+	precioShare = int(precio * 1.2)
 	cambioPrecio.emit(precio)
 func _on_arrow_body_porcentaje_accion(porcentaje: int) -> void:
 	porcentajeCambio=porcentaje
 	cambioPorcentajeCambio.emit(porcentajeCambio)
+
+
+func _on_hand_investor_spawner_transaccion(is_buy: bool) -> void:
+	if is_buy :
+		global.buy_shares(precioShare)
+	else :
+		global.sell_shaders(precioShare)
+	pass # Replace with function body.

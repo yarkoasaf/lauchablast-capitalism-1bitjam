@@ -6,4 +6,4 @@ func _ready() -> void:
 	_on_money_changed(global.money) # set inicial
 
 func _on_money_changed(new_money: int) -> void:
-	text = "money: " + str(new_money/10)
+	text = "money: " + str(new_money)

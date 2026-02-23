@@ -1,7 +1,6 @@
 extends Node2D
 
 @export var hand_investor_scene: PackedScene
-
 @export var spawn_enabled := true
 @export var auto_start := true
 @export var min_respawn_delay := 1.0
@@ -9,6 +8,10 @@ extends Node2D
 
 var _timer: Timer
 var _current_inst: Node = null
+
+signal transaccion (is_buy : bool)
+
+
 
 func _ready() -> void:
 	randomize()
@@ -62,7 +65,7 @@ func _spawn_one() -> void:
 		return
 
 	print("[Spawner] Spawning now")
-	var inst := hand_investor_scene.instantiate()
+	var inst = hand_investor_scene.instantiate()
 	_current_inst = inst
 	add_child(inst)
 
@@ -71,6 +74,8 @@ func _spawn_one() -> void:
 
 func _on_inst_exited() -> void:
 	print("[Spawner] instance exited")
+	if (_current_inst != null):
+		transaccion.emit(_current_inst.is_buy)
 	_current_inst = null
 
 	if not spawn_enabled:
@@ -82,7 +87,8 @@ func _on_inst_exited() -> void:
 	_timer.wait_time = delay
 	_timer.start()
 	print("[Spawner] respawn scheduled in ", delay, "s")
-
+	
+	
 func _on_timer_timeout() -> void:
 	print("[Spawner] timer timeout")
 	_spawn_one()

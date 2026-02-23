@@ -46,6 +46,14 @@ offset_right = 253.0
 offset_bottom = 196.0
 text = "BUY LOW SELL HIGH"
 
+[node name="Label3" type="Label" parent="Control" unique_id=1669283672]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 261.0
+offset_right = 289.0
+offset_bottom = 284.0
+text = "A GAME BY LAUCHABLAST"
+
 [node name="Label2" type="Label" parent="Control" unique_id=101469306]
 layout_mode = 0
 offset_left = 32.0

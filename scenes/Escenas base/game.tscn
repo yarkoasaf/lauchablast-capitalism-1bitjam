@@ -1,10 +1,15 @@
 [gd_scene format=3 uid="uid://drn3b8pjkwqii"]
 
+[ext_resource type="Script" uid="uid://4ujogkabe83n" path="res://scenes/Escenas base/gameRoot.gd" id="1_sth56"]
 [ext_resource type="PackedScene" uid="uid://u377wgernark" path="res://scenes/Elementos/pantalla.tscn" id="2_govxg"]
 [ext_resource type="FontFile" uid="uid://ubtjnswerari" path="res://assets/FONTS/SourceCodePro-BlackIt.otf" id="3_govxg"]
 [ext_resource type="Texture2D" uid="uid://0kvu2crx0j76" path="res://assets/sprites/A.jpg" id="3_j80bw"]
 [ext_resource type="AudioStream" uid="uid://ccmvsrrwke2r8" path="res://assets/watermello-hard-phonk-phonk-music-484666.mp3" id="4_ph21u"]
 [ext_resource type="Theme" uid="uid://nrq7fgbwoq5c" path="res://temaJuego.tres" id="5_j80bw"]
+[ext_resource type="Texture2D" uid="uid://btric6f0ecfkd" path="res://assets/sprites/tituloA.png" id="6_ph21u"]
+[ext_resource type="Texture2D" uid="uid://cmts18fyexghg" path="res://assets/sprites/titulo S.png" id="7_m10bg"]
+[ext_resource type="Texture2D" uid="uid://cuqbs3y2wewwb" path="res://assets/sprites/TITULO D.png" id="8_8litq"]
+[ext_resource type="Texture2D" uid="uid://dxuav8fpx3fx2" path="res://assets/sprites/beach.png" id="9_sth56"]
 
 [sub_resource type="Shader" id="Shader_xr2s6"]
 code = "shader_type canvas_item;
@@ -85,7 +90,7 @@ func _ready() -> void:
 	pass 
 
 func actualizar() -> void:
-	text =  \"MONEY: \" + str(global.money) 
+	text =  \"MONEY: $\" + str(global.money) 
 "
 
 [sub_resource type="GDScript" id="GDScript_ph21u"]
@@ -102,20 +107,71 @@ func actualizar() -> void:
 	text =  \"SHARES: \" + str(global.shares) 
 "
 
+[sub_resource type="GDScript" id="GDScript_sth56"]
+script/source = "extends Label
+
+var timer : float = 0.00
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	escribir()
+	
+	# timer.timeout.connect(tiempo)
+	
+func escribir () -> void:
+	var string: String = \"\"
+	for i in range(0, 30):
+		string += generate_random_format() + \" \"
+	text = string
+
+func _process(delta: float) -> void:
+	timer += delta
+	
+	if timer >= 1.0:
+		timer = 0.0
+		escribir()
+	 # Replace with function body.
+func generate_random_format() -> String:
+	# Random number of letters (2-3)
+	var num_letters = randi_range(2, 3)
+	var letters = \"\"
+	
+	# Generate random letters A-Z
+	for i in range(num_letters):
+		letters += char(randi_range(65, 90))  # ASCII 65-90 = A-Z
+	
+	# Generate random percentage (-100 to 100)
+	var percentage = randf_range(-100.0, 100.0)
+	
+	# Randomly select UP or DOWN
+	var direction = \"UP\" if randf() > 0.5 else \"DOWN\"
+	
+	# Format as \"LETTERS ±0.00% DIRECTION\"
+	return \"%s %.2f%% %s\" % [letters, percentage, direction]
+"
+
+[sub_resource type="Animation" id="Animation_sth56"]
+resource_name = "SCROLL"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vevom"]
+_data = {
+&"SCROLL": SubResource("Animation_sth56")
+}
+
 [node name="Game" type="Node2D" unique_id=915550732]
+script = ExtResource("1_sth56")
 
 [node name="pantallas" type="Node2D" parent="." unique_id=640760991]
+position = Vector2(3, 15.5)
 
 [node name="pantalla" parent="pantallas" unique_id=1778851164 instance=ExtResource("2_govxg")]
+top_level = true
 position = Vector2(64, 504.00003)
 scale = Vector2(0.15, 0.15)
 letraPantalla = "A"
 
-[node name="SpawnZone" parent="pantallas/pantalla/spawner" parent_id_path=PackedInt32Array(1778851164, 209979300) index="0" unique_id=2036837854]
-visible = false
-
 [node name="pantalla2" parent="pantallas" unique_id=1937358492 instance=ExtResource("2_govxg")]
 visible = false
+top_level = true
 position = Vector2(456, 504)
 scale = Vector2(0.15, 0.15)
 letraPantalla = "S"
@@ -123,10 +179,11 @@ precioPantalla = 10000
 
 [node name="pantalla3" parent="pantallas" unique_id=480501527 instance=ExtResource("2_govxg")]
 visible = false
+top_level = true
 position = Vector2(832, 504)
 scale = Vector2(0.15, 0.15)
 letraPantalla = "D"
-precioPantalla = 100000
+precioPantalla = 10000
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=210857573]
 layer = 0
@@ -142,15 +199,17 @@ grow_vertical = 2
 
 [node name="background" type="Sprite2D" parent="." unique_id=1912956683]
 z_index = -2
-position = Vector2(1296.0001, -32)
+position = Vector2(1299.0001, -16.5)
 scale = Vector2(7814, 4159)
 texture = ExtResource("3_j80bw")
 
 [node name="Control" type="Control" parent="." unique_id=1952983017]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1153.0
-offset_bottom = 644.0
+offset_left = 3.0
+offset_top = 15.5
+offset_right = 1156.0
+offset_bottom = 659.5
 theme = SubResource("Theme_0e48y")
 
 [node name="compra S" type="Label" parent="Control" unique_id=1181992201]
@@ -173,36 +232,82 @@ script = SubResource("GDScript_j80bw")
 
 [node name="MONEY" type="Label" parent="Control" unique_id=202557974]
 layout_mode = 0
-offset_left = 520.0
-offset_top = 48.0
-offset_right = 597.0
-offset_bottom = 71.0
+offset_left = 64.0
+offset_top = 80.5
+offset_right = 217.0
+offset_bottom = 121.5
 theme = ExtResource("5_j80bw")
+theme_override_font_sizes/font_size = 32
 text = "MONEYS: "
 script = SubResource("GDScript_1nay6")
 
 [node name="SHARES" type="Label" parent="Control" unique_id=555659274]
 layout_mode = 0
-offset_left = 520.0
-offset_top = 80.0
-offset_right = 588.0
-offset_bottom = 101.0
+offset_left = 64.0
+offset_top = 35.5
+offset_right = 198.0
+offset_bottom = 76.5
+theme_override_font_sizes/font_size = 32
 text = "SHARES:"
 script = SubResource("GDScript_ph21u")
+
+[node name="Label" type="Label" parent="Control" unique_id=1371467672]
+layout_mode = 0
+offset_left = 965.0
+offset_top = 88.5
+offset_right = 1090.0
+offset_bottom = 122.5
+theme_override_font_sizes/font_size = 26
+text = "$100.000"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=558295962]
 stream = ExtResource("4_ph21u")
 volume_db = -10.0
 
-[node name="Label" type="Label" parent="." unique_id=1440393779]
-offset_left = 153.0
-offset_top = 53.0
-offset_right = 220.0
-offset_bottom = 76.0
-text = "MONEY: "
-script = SubResource("GDScript_1nay6")
+[node name="TituloA" type="Sprite2D" parent="." unique_id=519469062]
+position = Vector2(184.00002, 224.00002)
+scale = Vector2(0.7, 0.6239726)
+texture = ExtResource("6_ph21u")
+
+[node name="TituloS" type="Sprite2D" parent="." unique_id=728973439]
+position = Vector2(600.00006, 224.00002)
+scale = Vector2(1.1, 0.92910963)
+texture = ExtResource("7_m10bg")
+
+[node name="TituloD" type="Sprite2D" parent="." unique_id=142892622]
+position = Vector2(968, 232)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("8_8litq")
+
+[node name="Beach" type="Sprite2D" parent="." unique_id=1554992123]
+position = Vector2(992, 92)
+texture = ExtResource("9_sth56")
+
+[node name="Label3" type="Label" parent="." unique_id=695531007]
+offset_left = -88.0
+offset_top = 560.0
+offset_right = 1234.0
+offset_bottom = 583.0
+text = "BUY LOW "
+script = SubResource("GDScript_sth56")
+
+[node name="por favor animar lol" type="AnimationPlayer" parent="." unique_id=305971258]
+libraries/ = SubResource("AnimationLibrary_vevom")
+autoplay = &"SCROLL"
+
+[node name="Label" type="Label" parent="por favor animar lol" unique_id=1830220867]
+offset_left = -216.0
+offset_top = 19.0
+offset_right = 2285.0
+offset_bottom = 42.0
+text = "BUY LOW // SELL HIGH // BUY LOW // SELL HIGH //BUY LOW // SELL HIGH //BUY LOW // SELL HIGH //BUY LOW // SELL HIGH //BUY LOW // SELL HIGH // BUY LOW // SELL HIGH // BUY LOW // SELL HIGH // BUY LOW // SELL HIGH // BUY LOW // SELL HIGH // BUY LOW // SELL HIGH // BUY LOW // SELL HIGH // BUY LOW // SELL HIGH //"
+
+[node name="Label2" type="Label" parent="por favor animar lol" unique_id=425246110]
+offset_left = -104.0
+offset_top = 616.0
+offset_right = 2397.0
+offset_bottom = 639.0
+text = "BUY LOW // SELL HIGH // BUY LOW // SELL HIGH //BUY LOW // SELL HIGH //BUY LOW // SELL HIGH //BUY LOW // SELL HIGH //BUY LOW // SELL HIGH // BUY LOW // SELL HIGH // BUY LOW // SELL HIGH // BUY LOW // SELL HIGH // BUY LOW // SELL HIGH // BUY LOW // SELL HIGH // BUY LOW // SELL HIGH // BUY LOW // SELL HIGH //"
 
 [connection signal="compraronPantalla" from="pantallas/pantalla2" to="Control/compra S" method="_on_pantalla_2_compraron_pantalla"]
 [connection signal="compraronPantalla" from="pantallas/pantalla3" to="Control/compra D" method="_on_pantalla_3_compraron_pantalla"]
-
-[editable path="pantallas/pantalla"]
