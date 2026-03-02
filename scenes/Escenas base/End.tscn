@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://brhb7sbn2ghqq"]
+
+[ext_resource type="Texture2D" uid="uid://0qlnsuw3ioio" path="res://assets/sprites/creditos.png" id="1_etowh"]
+
+[node name="End" type="Node2D" unique_id=1690238710]
+
+[node name="Creditos" type="Sprite2D" parent="." unique_id=652532007]
+position = Vector2(580, 270.75)
+scale = Vector2(1.4300001, 1.3855535)
+texture = ExtResource("1_etowh")

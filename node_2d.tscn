@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://c44wcoh434kqa"]
+
+[ext_resource type="PackedScene" uid="uid://u377wgernark" path="res://scenes/Elementos/pantalla.tscn" id="1_epypp"]
+[ext_resource type="AudioStream" uid="uid://ccmvsrrwke2r8" path="res://assets/watermello-hard-phonk-phonk-music-484666.mp3" id="3_epypp"]
+[ext_resource type="Texture2D" uid="uid://0kvu2crx0j76" path="res://assets/sprites/A.jpg" id="6_kdubu"]
+
+[sub_resource type="Shader" id="Shader_wtcfe"]
+code = "shader_type canvas_item;
+
+uniform sampler2D screen_tex : hint_screen_texture;
+
+uniform vec4 color_a : source_color = vec4(0.0, 0.0, 0.0, 1.0); // Color oscuro
+uniform vec4 color_b : source_color = vec4(1.0, 1.0, 1.0, 1.0); // Color claro
+uniform float threshold : hint_range(0.0, 1.0) = 0.5;
+uniform float dither_strength : hint_range(0.0, 0.02) = 0.004; // 0 = sin dither
+
+float hash(vec2 p) {
+	return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
+}
+
+void fragment() {
+	// Color original de pantalla
+	vec3 col = texture(screen_tex, SCREEN_UV).rgb;
+
+	// Luminancia (brillo percibido)
+	float lum = dot(col, vec3(0.2126, 0.7152, 0.0722));
+
+	// Dither opcional: SOLO afecta dónde cae el umbral, pero el resultado sigue siendo 2 colores
+	if (dither_strength > 0.0) {
+		float n = hash(FRAGCOORD.xy) - 0.5; // -0.5..0.5
+		lum += n * dither_strength;
+	}
+
+	// Decisión binaria: 0 o 1
+	float m = step(threshold, lum);
+
+	// Salida final: estrictamente 2 colores
+	COLOR = mix(color_a, color_b, m);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wtcfe"]
+shader = SubResource("Shader_wtcfe")
+shader_parameter/color_a = Color(0.03137255, 0.1254902, 0.24313726, 1)
+shader_parameter/color_b = Color(0.65882355, 0.7490196, 0.8039216, 1)
+shader_parameter/threshold = 0.4230000200925
+shader_parameter/dither_strength = 0.0030000001425
+
+[sub_resource type="Theme" id="Theme_0e48y"]
+
+[node name="Game" type="Node2D" unique_id=915550732]
+
+[node name="pantallas" type="Node2D" parent="." unique_id=640760991]
+
+[node name="pantalla" parent="pantallas" unique_id=1778851164 instance=ExtResource("1_epypp")]
+position = Vector2(59, 328)
+scale = Vector2(0.15, 0.15)
+
+[node name="pantalla2" parent="pantallas" unique_id=1937358492 instance=ExtResource("1_epypp")]
+position = Vector2(394, 328)
+scale = Vector2(0.15, 0.15)
+letraPantalla = "D"
+
+[node name="pantalla3" parent="pantallas" unique_id=480501527 instance=ExtResource("1_epypp")]
+position = Vector2(795, 278)
+scale = Vector2(0.15, 0.15)
+letraPantalla = "S"
+
+[node name="pantalla4" parent="pantallas" unique_id=1347759319 instance=ExtResource("1_epypp")]
+position = Vector2(708, 591)
+scale = Vector2(0.15, 0.15)
+letraPantalla = "F"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=210857573]
+layer = 0
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1401518524]
+material = SubResource("ShaderMaterial_wtcfe")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="background" type="Sprite2D" parent="." unique_id=1912956683]
+z_index = -2
+position = Vector2(1296.0001, -32)
+scale = Vector2(7814, 4159)
+texture = ExtResource("6_kdubu")
+
+[node name="Control" type="Control" parent="." unique_id=1952983017]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 644.0
+theme = SubResource("Theme_0e48y")
+
+[node name="WatermelloHardPhonkPhonkMusic484666" type="AudioStreamPlayer" parent="." unique_id=373980899]
+stream = ExtResource("3_epypp")
+autoplay = true

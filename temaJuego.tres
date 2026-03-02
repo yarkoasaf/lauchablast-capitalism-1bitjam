@@ -1,0 +1,19 @@
+[gd_resource type="Theme" format=3 uid="uid://nrq7fgbwoq5c"]
+
+[ext_resource type="StyleBox" uid="uid://dwrlvg8crbhma" path="res://materials/estilos/botonMenuHover.tres" id="1_hs8ov"]
+[ext_resource type="StyleBox" uid="uid://cbngy6ekk27r0" path="res://materials/estilos/botonMenuPress.tres" id="2_bn04g"]
+[ext_resource type="FontFile" uid="uid://ubtjnswerari" path="res://assets/FONTS/SourceCodePro-BlackIt.otf" id="3_bn04g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4trqu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_62v7d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qyjba"]
+
+[resource]
+default_font = ExtResource("3_bn04g")
+Button/styles/disabled = SubResource("StyleBoxEmpty_4trqu")
+Button/styles/focus = SubResource("StyleBoxEmpty_62v7d")
+Button/styles/hover = ExtResource("1_hs8ov")
+Button/styles/normal = SubResource("StyleBoxEmpty_qyjba")
+Button/styles/pressed = ExtResource("2_bn04g")
